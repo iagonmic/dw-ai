@@ -1,0 +1,8 @@
+diagnosis_code,code_system,diagnosis_name,diagnosis_group,ccs_category,chronic_flag,risk_adjusted_flag,effective_date,retired_date
+E11.9,ICD10,Type 2 diabetes without complications,Endocrine,Diabetes,true,true,2015-10-01,
+I10,ICD10,Essential hypertension,Circulatory,Hypertension,true,true,2015-10-01,
+J06.9,ICD10,Acute upper respiratory infection,Respiratory,URI,false,false,2015-10-01,
+R07.9,ICD10,Chest pain unspecified,Symptoms,Chest Pain,false,false,2015-10-01,
+Z00.0,ICD10,General adult medical examination,Encounter,Preventive,false,false,2015-10-01,
+E78.5,ICD10,Hyperlipidemia unspecified,Endocrine,Lipids,true,true,2015-10-01,
+

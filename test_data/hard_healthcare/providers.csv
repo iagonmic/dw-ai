@@ -1,0 +1,7 @@
+provider_id,npi,provider_name,provider_type,specialty,department_id,employment_status,hire_date,termination_date,credential_level,accepting_new_patients
+PR001,1000000001,Dr Ana Reed,Physician,Internal Medicine,D001,Active,2017-01-10,,MD,true
+PR002,1000000002,Dr Bruno Mills,Physician,Family Medicine,D001,Active,2019-04-01,,MD,true
+PR003,1000000003,Dr Carla Wong,Physician,Cardiology,D002,Active,2015-08-15,,MD,false
+PR004,1000000004,Dr Daniel Brooks,Physician,Endocrinology,D003,Active,2018-02-20,,MD,true
+PR005,1000000005,Nurse Elena Fox,Nurse Practitioner,Primary Care,D001,Active,2022-05-01,,NP,true
+

@@ -1,0 +1,12 @@
+enrollment_id,student_id,course_component_id,instructor_id,year,term,enrollment_status,final_grade,attendance_percentage,hours_attempted,class_section,campus,delivery_mode,enrollment_date,completion_date,failed_for_absence
+E001,S001,1001,I001,2026,1,Passed,8.5,96,60,A01,Main Campus,In person,2026-02-10,2026-06-30,false
+E002,S001,1003,I003,2026,1,Passed,7.8,92,60,A01,Main Campus,In person,2026-02-10,2026-06-30,false
+E003,S002,1001,I001,2026,1,Failed,4.2,88,60,A01,Main Campus,In person,2026-02-11,2026-06-30,false
+E004,S002,1002,I002,2026,1,Passed,7.1,90,60,B02,Main Campus,In person,2026-02-11,2026-06-30,false
+E005,S003,1004,I004,2026,1,Passed,9.0,98,60,N01,Main Campus,In person,2026-02-12,2026-06-30,false
+E006,S004,1002,I002,2026,1,Dropped,,0,0,B02,Main Campus,In person,2026-02-12,,false
+E007,S005,1005,I003,2026,1,Passed,9.4,100,60,C03,Main Campus,In person,2026-02-13,2026-06-30,false
+E008,S006,1005,I003,2026,2,In Progress,,75,60,C03,Main Campus,In person,2026-07-20,,false
+E009,S007,1003,I003,2026,2,Cancelled,,0,0,A01,Main Campus,In person,2026-07-20,,false
+E010,S008,1004,I004,2026,2,In Progress,,82,60,N01,Main Campus,In person,2026-07-21,,false
+

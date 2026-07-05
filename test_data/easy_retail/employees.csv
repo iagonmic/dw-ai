@@ -1,0 +1,8 @@
+employee_id,employee_code,employee_name,role,department,hire_date,store_id,manager_id,employment_type,active
+900,EMP900,Marina Dias,Director,Sales,2019-01-10,10,,Full-time,true
+901,EMP901,Caio Torres,Store Manager,Sales,2020-03-01,11,900,Full-time,true
+902,EMP902,Renata Lopes,Store Manager,Sales,2021-06-15,12,900,Full-time,true
+903,EMP903,Tiago Barros,Store Manager,Sales,2023-02-01,13,900,Full-time,true
+904,EMP904,Livia Ramos,Sales Associate,Sales,2024-04-05,11,901,Full-time,true
+905,EMP905,Pedro Vieira,Sales Associate,Sales,2024-05-12,12,902,Part-time,true
+

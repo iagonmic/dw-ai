@@ -1,0 +1,6 @@
+instructor_id,person_number,gender,employment_type,department_code,department_name,center_code,center_name,employment_status,job_title,hire_year,termination_year,degree_level,workload,email
+I001,9001,F,Tenured,CS,COMPUTER SCIENCE DEPARTMENT,ENG,SCHOOL OF ENGINEERING,Active,Professor,2018,,PhD,Full-time,ava.prof@university.edu
+I002,9002,M,Tenured,STAT,STATISTICS DEPARTMENT,SCI,SCHOOL OF SCIENCE,Active,Professor,2016,,PhD,Full-time,ben.prof@university.edu
+I003,9003,F,Adjunct,CS,COMPUTER SCIENCE DEPARTMENT,ENG,SCHOOL OF ENGINEERING,Active,Adjunct Professor,2025,2027,MSc,Part-time,clara.prof@university.edu
+I004,9004,M,Tenured,CS,COMPUTER SCIENCE DEPARTMENT,ENG,SCHOOL OF ENGINEERING,On Leave,Professor,2012,,PhD,Full-time,david.prof@university.edu
+

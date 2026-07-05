@@ -1,0 +1,7 @@
+course_component_id,component_detail_id,component_code,component_name,lecture_hours,lab_hours,total_hours,lecture_credits,lab_credits,internship_credits,online_hours,department_code,component_level,academic_unit,department_name,center_code,center_name,max_enrollments,component_type,exclude_from_evaluation,active
+1001,5001,COMP1001,DATABASE SYSTEMS,45,15,60,3,1,0,0,CS,Undergraduate,CS,COMPUTER SCIENCE DEPARTMENT,ENG,SCHOOL OF ENGINEERING,40,COURSE,false,true
+1002,5002,COMP1002,APPLIED STATISTICS,60,0,60,4,0,0,0,STAT,Undergraduate,DS,STATISTICS DEPARTMENT,SCI,SCHOOL OF SCIENCE,45,COURSE,false,true
+1003,5003,COMP1003,ALGORITHMS,45,15,60,3,1,0,0,CS,Undergraduate,CS,COMPUTER SCIENCE DEPARTMENT,ENG,SCHOOL OF ENGINEERING,50,COURSE,false,true
+1004,5004,COMP1004,SOFTWARE ENGINEERING,60,0,60,4,0,0,0,CS,Undergraduate,IS,COMPUTER SCIENCE DEPARTMENT,ENG,SCHOOL OF ENGINEERING,35,COURSE,false,true
+1005,5005,COMP1005,DATA ANALYSIS,30,30,60,2,2,0,0,CS,Undergraduate,DS,COMPUTER SCIENCE DEPARTMENT,ENG,SCHOOL OF ENGINEERING,30,COURSE,false,true
+

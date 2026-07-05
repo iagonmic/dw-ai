@@ -1,0 +1,10 @@
+patient_id,medical_record_number,patient_name,birth_date,gender,sex_at_birth,race,ethnicity,marital_status,primary_language,address_city,address_state,postal_code,insurance_plan_id,primary_provider_id,enrollment_date,deceased_flag,risk_score,chronic_condition_count
+PT001,MRN001,Alice Hart,1980-02-14,F,F,White,Non-Hispanic,Married,English,Boston,MA,02108,PLAN1,PR001,2020-01-01,false,1.8,2
+PT002,MRN002,Ben King,1971-09-03,M,M,Black,Non-Hispanic,Single,English,Worcester,MA,01608,PLAN2,PR002,2021-05-12,false,2.4,3
+PT003,MRN003,Clara Diaz,1992-11-20,F,F,Other,Hispanic,Single,Spanish,Springfield,MA,01103,PLAN1,PR001,2022-07-18,false,0.6,0
+PT004,MRN004,David Chen,1964-05-30,M,M,Asian,Non-Hispanic,Married,English,Cambridge,MA,02139,PLAN3,PR003,2019-03-05,false,3.1,4
+PT005,MRN005,Eva Stone,2001-01-08,F,F,White,Non-Hispanic,Single,English,Lowell,MA,01852,PLAN2,PR002,2023-09-01,false,0.9,1
+PT006,MRN006,Felix Gomez,1958-12-01,M,M,Other,Hispanic,Married,Spanish,Quincy,MA,02169,PLAN3,PR004,2018-10-10,false,3.8,5
+PT007,MRN007,Grace Hill,1988-07-16,F,F,Black,Non-Hispanic,Divorced,English,Boston,MA,02118,PLAN1,PR001,2021-11-22,false,1.2,1
+PT008,MRN008,Hugo Patel,1975-04-25,M,M,Asian,Non-Hispanic,Married,English,Newton,MA,02458,PLAN2,PR003,2020-06-06,false,2.2,2
+

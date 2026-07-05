@@ -1,0 +1,10 @@
+product_id,sku,product_name,category,subcategory,brand,color,size,unit_cost,list_price,standard_margin,launch_date,active,supplier_name,supplier_country,weight_kg,warranty_months
+101,SKU101,Notebook Pro,Electronics,Computers,Northstar,Silver,14in,3200,4899,0.35,2025-01-15,true,TechSource,China,1.4,24
+102,SKU102,Wireless Mouse,Electronics,Accessories,Northstar,Black,Standard,35,89,0.55,2024-09-10,true,TechSource,China,0.1,12
+103,SKU103,Office Chair,Furniture,Chairs,ErgoMax,Gray,Large,420,799,0.40,2024-05-20,true,MoveisBR,Brazil,12.0,36
+104,SKU104,Standing Desk,Furniture,Desks,ErgoMax,Oak,160cm,900,1599,0.38,2024-11-01,true,MoveisBR,Brazil,32.0,36
+105,SKU105,USB-C Hub,Electronics,Accessories,LinkFast,Space Gray,7-port,80,199,0.52,2025-02-12,true,CableWorld,Taiwan,0.2,12
+106,SKU106,Monitor 27,Electronics,Displays,VisionX,Black,27in,780,1399,0.42,2025-03-18,true,DisplayHub,South Korea,4.6,24
+107,SKU107,Backpack Travel,Bags,Backpacks,UrbanWay,Navy,30L,120,279,0.50,2024-07-07,true,UrbanWay,Brazil,0.9,6
+108,SKU108,Desk Lamp,Home Office,Lighting,Luma,White,LED,55,149,0.48,2024-08-25,true,LumaLight,Brazil,0.7,12
+

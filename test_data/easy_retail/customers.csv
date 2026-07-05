@@ -1,0 +1,12 @@
+customer_id,customer_code,customer_name,email,phone,segment,loyalty_tier,signup_date,birth_year,gender,city,state,country,postal_code,marketing_opt_in,preferred_channel,account_status,last_purchase_date,credit_limit
+1,CUST001,Ana Lima,ana@example.com,555-0101,Consumer,Gold,2023-01-10,1988,F,Sao Paulo,SP,Brazil,01000-000,true,email,active,2026-06-20,5000
+2,CUST002,Bruno Costa,bruno@example.com,555-0102,Corporate,Silver,2023-02-14,1979,M,Rio de Janeiro,RJ,Brazil,20000-000,true,phone,active,2026-06-18,12000
+3,CUST003,Carla Souza,carla@example.com,555-0103,Consumer,Bronze,2023-03-08,1994,F,Belo Horizonte,MG,Brazil,30000-000,false,email,active,2026-06-10,2500
+4,CUST004,Diego Alves,diego@example.com,555-0104,Small Business,Gold,2023-04-22,1982,M,Curitiba,PR,Brazil,80000-000,true,whatsapp,active,2026-06-23,8000
+5,CUST005,Elisa Rocha,elisa@example.com,555-0105,Consumer,Silver,2023-05-17,1991,F,Recife,PE,Brazil,50000-000,false,email,inactive,2026-05-29,3000
+6,CUST006,Felipe Martins,felipe@example.com,555-0106,Corporate,Platinum,2023-06-11,1975,M,Porto Alegre,RS,Brazil,90000-000,true,phone,active,2026-06-25,20000
+7,CUST007,Gabriela Nunes,gabriela@example.com,555-0107,Consumer,Bronze,2023-07-19,1998,F,Salvador,BA,Brazil,40000-000,true,email,active,2026-06-12,2200
+8,CUST008,Hugo Pereira,hugo@example.com,555-0108,Small Business,Silver,2023-08-03,1985,M,Fortaleza,CE,Brazil,60000-000,false,whatsapp,active,2026-06-08,6500
+9,CUST009,Isabela Freitas,isabela@example.com,555-0109,Consumer,Gold,2023-09-25,1990,F,Campinas,SP,Brazil,13000-000,true,email,active,2026-06-21,5200
+10,CUST010,Joao Mendes,joao@example.com,555-0110,Corporate,Silver,2023-10-30,1981,M,Natal,RN,Brazil,59000-000,true,phone,active,2026-06-15,11000
+

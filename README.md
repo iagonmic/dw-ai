@@ -1,332 +1,192 @@
 # DW-AI
 
-Sistema inteligente para auxiliar na criação de modelos dimensionais de Data Warehouse a partir de estruturas transacionais.
+DW-AI is a local MVP for generating Kimball-style dimensional models from enterprise data sources.
 
-O DW-AI tem como objetivo analisar schemas relacionais, identificar entidades analíticas e sugerir uma modelagem dimensional seguindo boas práticas de Business Intelligence e a metodologia de Ralph Kimball.
+It ingests uploaded files or PostgreSQL schemas, profiles metadata plus bounded row samples, proposes facts and dimensions, and exports a runnable DuckDB/dbt project with a Mermaid diagram.
 
----
+## What It Supports
 
-## Sobre o projeto
+First-class MVP inputs:
 
-Na construção de um Data Warehouse, uma das etapas mais importantes é transformar dados operacionais em estruturas analíticas.
+- CSV and TSV
+- XLSX
+- Parquet
+- JSON and NDJSON
+- PostgreSQL schema introspection through DuckDB's PostgreSQL extension
 
-Esse processo normalmente exige:
+Language support:
 
-- análise de tabelas transacionais;
-- identificação de fatos e dimensões;
-- definição de métricas;
-- criação de modelos dimensionais;
-- documentação das decisões.
+- English and Portuguese UI labels.
+- Portuguese-aware profiling for common identifiers such as `id_discente`, `id_disciplina`, `id_pessoa`, `codigo_disciplina`, and `codigo_componente_curricular`.
+- Portuguese-aware temporal detection for columns such as `ano`, `periodo`, `ano_ingresso`, `periodo_ingresso`, `ano_nascimento`, `ano_admissao`, and `ano_desligamento`.
+- Portuguese academic transaction names such as `matriculas` are treated as fact candidates.
 
-O DW-AI busca automatizar parte desse processo utilizando técnicas de análise estrutural e Inteligência Artificial para auxiliar engenheiros de dados e analistas na criação de modelos analíticos.
+Future-compatible source families:
 
----
+- SQLite, MySQL, SQL Server, Oracle, ODBC/JDBC databases
+- Avro, Delta Lake, Iceberg
+- S3, GCS, Azure object storage
+- BI extracts and governed catalog integrations
 
-## Objetivo
+## MVP Workflow
 
-O sistema recebe uma estrutura de banco transacional e gera uma sugestão de modelo dimensional.
+1. Upload custom files, load one of the built-in demo datasets, or enter a PostgreSQL connection string.
+2. Preview tables, columns, inferred types, samples, null rates, key candidates, and relationship candidates.
+3. Generate a dimensional model.
+4. Review proposed facts, dimensions, measures, date columns, grains, assumptions, and confidence.
+5. Download a dbt project ZIP containing SQL models, YAML docs/tests, and `diagram.mmd`.
 
-Fluxo principal:
+Custom uploaded files and demo data are shown together in the app. If the user uploads files, those custom files take precedence and the demo-data loader is disabled to avoid mixing sources in the same run.
 
+The AI integration is optional. If no API key is provided, DW-AI uses deterministic Kimball heuristics so the demo still works offline.
+
+## Deterministic Mode vs AI Mode
+
+DW-AI always runs deterministic profiling first. This part does not use AI:
+
+- Reads tables into DuckDB.
+- Counts rows and distinct values.
+- Detects null rates, sample values, candidate keys, identifier columns, numeric columns, and temporal columns.
+- Infers relationships by comparing identifier names and value overlap.
+- Builds a conservative Kimball model from rules.
+
+When an API key is provided in the local UI and the AI toggle is enabled, the app sends only metadata and bounded samples to the selected provider. The AI can improve semantic interpretation, especially when names are ambiguous or in Portuguese, but it does not replace profiling. It receives the deterministic plan as a fallback and should return structured JSON with facts, dimensions, grains, measures, assumptions, confidence, and unresolved questions.
+
+Practical difference:
+
+- Without AI: fast, reproducible, private by default, but limited to naming/statistical heuristics.
+- With AI: better business-language interpretation and explanations, but depends on API access and should still be reviewed before production use.
+
+## AI Providers
+
+The MVP supports two OpenAI-compatible providers:
+
+- OpenAI: the paid/default provider. Choose `OpenAI`, paste an OpenAI API key, and use a model such as `gpt-4.1-mini`.
+- Groq: the alternate provider. Choose `Groq`, paste a Groq API key, click `Load Groq models`, then select one of the models returned by Groq's `/models` endpoint.
+
+For v1, API keys are entered in the Streamlit sidebar and kept only in local process memory. The app is intended to run on the user's own computer, so no encryption or credential storage is implemented yet.
+
+Environment variable fallback is still supported for local development:
+
+- `OPENAI_API_KEY`
+- `GROQ_API_KEY`
+- `DW_AI_OPENAI_MODEL`
+- `DW_AI_GROQ_MODEL`
+
+## Generated dbt Project
+
+The exported ZIP includes:
+
+- `dbt_project.yml`
+- `profiles.yml.example`
+- `models/sources.yml`
+- `models/staging/stg_*.sql`
+- `models/marts/dim_*.sql`
+- `models/marts/fct_*.sql`
+- `models/marts/schema.yml`
+- `diagram.mmd`
+- `README.md`
+
+The first target is local DuckDB. Other adapters such as PostgreSQL, BigQuery, and Snowflake can be added later.
+
+## Install
+
+```powershell
+python -m pip install -e .[dev]
 ```
 
-Schema Transacional
-|
-v
-Análise Estrutural
-|
-v
-Identificação de Fatos e Dimensões
-|
-v
-Modelo Dimensional (Star Schema)
+Optional AI configuration for local development:
 
-````
-
----
-
-# Funcionalidades
-
-## Análise de schema SQL
-
-O sistema aceita estruturas SQL DDL contendo criação de tabelas.
-
-Exemplo:
-
-```sql
-CREATE TABLE orders (
-    id INT PRIMARY KEY,
-    customer_id INT,
-    total DECIMAL,
-    created_at TIMESTAMP
-);
-````
-
----
-
-## Extração de metadados
-
-O DW-AI identifica:
-
-* tabelas;
-* colunas;
-* tipos de dados;
-* chaves primárias;
-* chaves estrangeiras;
-* relacionamentos.
-
----
-
-## Identificação de tabelas fato
-
-O sistema analisa características transacionais para encontrar possíveis fatos.
-
-Exemplos:
-
-```
-sales
-orders
-transactions
+```powershell
+$env:OPENAI_API_KEY = "sk-..."
+$env:DW_AI_OPENAI_MODEL = "gpt-4.1-mini"
+$env:GROQ_API_KEY = "gsk_..."
+$env:DW_AI_GROQ_MODEL = "llama-3.3-70b-versatile"
 ```
 
-Critérios analisados:
+## Run The App
 
-* quantidade de relacionamentos;
-* presença de métricas;
-* natureza histórica dos dados.
-
----
-
-## Identificação de dimensões
-
-Detecta tabelas descritivas usadas para análise.
-
-Exemplos:
-
-```
-customers
-products
-stores
+```powershell
+python -m streamlit run app.py
 ```
 
----
+## Run Tests
 
-## Identificação de medidas
-
-Localiza possíveis métricas analíticas:
-
-Exemplos:
-
-```
-quantity
-price
-amount
-total
+```powershell
+python -m pytest
 ```
 
----
+## Demo Data
 
-## Geração de Star Schema
+If you do not have data ready, use the small CSV scenarios in `test_data/`:
 
-O sistema gera uma sugestão de modelo dimensional:
+- `test_data/easy_retail`: obvious retail orders pattern for quick validation.
+- `test_data/medium_university`: English university data with `students`, `course_components`, `program_courses`, `instructors`, and `enrollments`.
+- `test_data/hard_healthcare`: harder clinical and billing data with multiple fact candidates.
 
-```json
-{
-    "fact_table": "fact_sales",
-    "dimensions": [
-        "dim_customer",
-        "dim_product",
-        "dim_date"
-    ],
-    "measures": [
-        "quantity",
-        "total"
-    ]
-}
+Each table has 20 rows or fewer, but includes enough columns to exercise profiling, relationship detection, temporal detection, and dbt generation.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[Files or PostgreSQL] --> B[DuckDB ingestion]
+    B --> C[Schema and sample profiler]
+    C --> D[Deterministic Kimball heuristics]
+    D --> E[Optional OpenAI modelling agent]
+    E --> F[Validated dimensional plan]
+    F --> G[dbt project generator]
+    F --> H[Mermaid diagram]
 ```
 
----
+## Code Map
 
-## Explicação das decisões
+- `app.py`: Streamlit user interface. It handles language selection, file upload or PostgreSQL connection input, displays profiling results, runs model generation, and exposes the dbt ZIP download.
+- `dw_ai/ingestion.py`: Loads supported files into an in-memory DuckDB database. CSV/TSV/JSON/Parquet use DuckDB readers; XLSX is read with pandas; PostgreSQL is attached read-only through DuckDB.
+- `dw_ai/profiling.py`: Inspects DuckDB tables. It calculates row counts, null rates, distinct counts, unique ratios, sample values, candidate keys, identifier columns, temporal columns, and relationship candidates.
+- `dw_ai/modelling.py`: Builds the deterministic Kimball proposal. It decides which tables are fact candidates, which are dimensions, which columns are measures, which identifiers are degenerate dimensions, and when to add `dim_date`.
+- `dw_ai/ai_agent.py`: Optional AI refinement layer for OpenAI and Groq. If enabled and configured, it sends compact metadata plus the deterministic fallback plan to the selected provider and validates the JSON response.
+- `dw_ai/dbt_generator.py`: Converts the dimensional plan into dbt files: sources, staging views, mart facts/dimensions, tests, docs, profile example, and project config.
+- `dw_ai/diagram.py`: Converts the same dimensional plan into Mermaid ER syntax and a compact star-schema overview.
+- `dw_ai/artifacts.py`: Packages generated dbt files and the diagram into a downloadable ZIP.
+- `dw_ai/models.py`: Pydantic data contracts shared by the pipeline.
+- `dw_ai/utils.py`: Small naming, quoting, singularization, and serialization helpers.
+- `tests/`: Regression tests for ingestion, profiling, Portuguese academic identifiers, deterministic modelling, and dbt artifact generation.
 
-Além do resultado, o sistema pode explicar as classificações.
+## Modelling Rules
 
-Exemplo:
+- Facts represent measurable business events and must state their grain.
+- Dimensions hold descriptive context and use generated surrogate keys.
+- Date dimensions are generated when temporal fact columns are detected.
+- Numeric non-identifier columns become measure candidates.
+- Order numbers, invoice numbers, transaction codes, and similar identifiers may become degenerate dimensions.
+- Low-confidence joins become assumptions instead of hidden fake relationships.
 
-```
-A tabela orders foi classificada como fato porque possui:
+## Diagram Options
 
-- múltiplas chaves estrangeiras;
-- medidas numéricas;
-- comportamento transacional.
-```
+The app now generates two Mermaid files:
 
----
+- `diagram_compact.mmd`: a readable star-schema overview for humans and presentations.
+- `diagram.mmd`: the detailed ER-style diagram with columns.
 
-# Arquitetura
+The compact diagram is the better default for visual review. The full ER diagram is useful for auditing column-level output, but it gets noisy with wide enterprise tables.
 
-O backend segue um pipeline simples:
+For a more polished future UI, good options are:
 
-```
-        SQL DDL
-           |
-           v
-     DDL Parser
-           |
-           v
-   Modelo Interno
-           |
-           v
-  Análise Dimensional
-           |
-           v
- Star Schema Generator
-           |
-           v
-       JSON API
-```
+- Graphviz/SVG rendering for cleaner automatic layouts.
+- React Flow for an editable browser canvas.
+- dbdiagram.io-compatible DBML export for database-style diagrams.
+- Mermaid only as a portable fallback artifact in the dbt ZIP.
 
----
+## Portuguese Academic Data Notes
 
-# Tecnologias
+The sample academic files `componentes`, `cursos`, `discentes`, `docentes`, and `matriculas` expose why language/domain support matters:
 
-## Backend
+- `id_discente` and `id_disciplina` are real relationship keys, even though they do not follow the English `customer_id -> customers.id` pattern.
+- `ano` and `periodo` are temporal analysis fields even when stored as strings.
+- `matriculas` is an event/process table and should be considered a fact candidate.
+- Partial value overlap can happen when files cover different extraction windows. DW-AI keeps those relationships but records assumptions with confidence percentages so they can be reviewed.
 
-* Python
-* FastAPI
-* Pydantic
+## Academic Goal
 
-## Banco de dados
-
-* PostgreSQL (planejado)
-
-## Inteligência Artificial
-
-* Integração com LLM para:
-
-  * classificação semântica;
-  * explicação de decisões;
-  * sugestões de melhoria.
-
----
-
-# Estrutura do projeto
-
-```
-dw-ai/
-
-├── app/
-│
-├── api/
-│   └── endpoints da aplicação
-│
-├── models/
-│   └── entidades do sistema
-│
-├── parsers/
-│   └── interpretação de SQL
-│
-├── services/
-│   ├── análise dimensional
-│   ├── detecção de fatos
-│   ├── detecção de dimensões
-│   └── geração do modelo
-│
-├── ai/
-│   └── integração com IA
-│
-├── tests/
-│
-└── examples/
-    └── schemas SQL de exemplo
-```
-
----
-
-# Requisitos do sistema
-
-## Requisitos funcionais
-
-* Receber schema SQL;
-* Interpretar tabelas e colunas;
-* Identificar relacionamentos;
-* Detectar fatos;
-* Detectar dimensões;
-* Encontrar medidas;
-* Identificar dimensão temporal;
-* Gerar Star Schema;
-* Explicar decisões.
-
----
-
-## Requisitos não funcionais
-
-* Código modular;
-* Fácil manutenção;
-* Resposta rápida para schemas médios;
-* Arquitetura preparada para expansão;
-* Validação das entradas;
-* Segurança dos dados enviados.
-
----
-
-# Roadmap
-
-## Versão 0.1
-
-* [x] Definição da arquitetura
-* [ ] Parser SQL
-* [ ] Modelo interno de dados
-* [ ] Detector de fatos
-* [ ] Detector de dimensões
-* [ ] Gerador Star Schema
-
----
-
-## Versão 0.2
-
-* [ ] API REST completa
-* [ ] Persistência dos modelos
-* [ ] Histórico de análises
-
----
-
-## Versão 0.3
-
-* [ ] Integração com IA
-* [ ] Explicações automáticas
-* [ ] Sugestões inteligentes
-
----
-
-## Versão futura
-
-* Conexão direta com bancos;
-* Suporte a múltiplos SGBDs;
-* Geração automática de documentação;
-* Integração com ferramentas de BI.
-
----
-
-# Conceitos utilizados
-
-O projeto utiliza conceitos de:
-
-* Data Warehouse;
-* Modelagem Dimensional;
-* Star Schema;
-* ETL/ELT;
-* Engenharia Analítica;
-* Inteligência Artificial aplicada à Engenharia de Dados.
-
----
-
-# Objetivo acadêmico
-
-O DW-AI busca demonstrar como técnicas de análise estrutural e Inteligência Artificial podem auxiliar na transformação de dados transacionais em modelos analíticos, reduzindo esforço manual no processo de criação de Data Warehouses.
-
----
-
-# Licença
-
-Este projeto está em desenvolvimento para fins acadêmicos e de pesquisa.
+DW-AI explores how structural profiling and AI assistance can reduce the manual effort of transforming operational data into dimensional data warehouse models.

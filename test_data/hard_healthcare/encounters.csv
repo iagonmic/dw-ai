@@ -1,0 +1,12 @@
+encounter_id,patient_id,provider_id,department_id,primary_diagnosis_code,primary_procedure_code,encounter_date,check_in_time,check_out_time,encounter_type,visit_reason,appointment_status,admit_source,discharge_disposition,length_of_stay_minutes,total_charge,patient_responsibility,payer_paid_amount,no_show_flag,telehealth_flag
+E001,PT001,PR001,D001,I10,99214,2026-01-05,08:00,08:35,Office Visit,Follow-up,Completed,Clinic,Home,35,220,25,160,false,false
+E002,PT002,PR002,D001,E11.9,99214,2026-01-06,09:10,09:55,Office Visit,Diabetes,Completed,Clinic,Home,45,240,35,170,false,false
+E003,PT003,PR005,D001,J06.9,99213,2026-01-07,10:00,10:20,Telehealth,Cough,Completed,Telehealth,Home,20,120,10,90,false,true
+E004,PT004,PR003,D002,R07.9,93000,2026-01-08,11:00,11:50,Office Visit,Chest pain,Completed,Clinic,Home,50,420,60,290,false,false
+E005,PT005,PR002,D001,Z00.0,99213,2026-01-09,13:00,13:25,Preventive,Annual exam,Completed,Clinic,Home,25,180,0,150,false,false
+E006,PT006,PR004,D003,E11.9,99214,2026-01-10,14:10,15:05,Office Visit,Diabetes,Completed,Clinic,Home,55,260,45,175,false,false
+E007,PT007,PR001,D001,I10,99213,2026-01-11,08:40,09:05,Office Visit,Blood pressure,Completed,Clinic,Home,25,180,20,130,false,false
+E008,PT008,PR003,D002,E78.5,99214,2026-01-12,15:00,15:40,Office Visit,Lipids,Completed,Clinic,Home,40,250,30,180,false,false
+E009,PT001,PR001,D001,E78.5,99213,2026-02-03,08:20,08:50,Office Visit,Labs review,Completed,Clinic,Home,30,190,20,140,false,false
+E010,PT002,PR004,D003,E11.9,99214,2026-02-05,09:30,10:20,Office Visit,Medication adjustment,Completed,Clinic,Home,50,260,40,180,false,false
+

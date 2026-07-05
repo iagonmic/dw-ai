@@ -1,0 +1,6 @@
+store_id,store_code,store_name,channel,region,city,state,country,opened_date,manager_name,square_meters,active
+10,STORE10,Online Brazil,Ecommerce,National,Sao Paulo,SP,Brazil,2022-01-01,Marina Dias,0,true
+11,STORE11,Paulista Flagship,Retail,Southeast,Sao Paulo,SP,Brazil,2020-03-15,Caio Torres,850,true
+12,STORE12,Rio Centro,Retail,Southeast,Rio de Janeiro,RJ,Brazil,2021-07-01,Renata Lopes,620,true
+13,STORE13,Recife Mall,Retail,Northeast,Recife,PE,Brazil,2023-02-18,Tiago Barros,410,true
+

@@ -1,0 +1,10 @@
+student_id,student_number,first_name,last_name,gender,marital_status,declared_race,student_level,course_id,curriculum_id,program_structure_id,entry_year,entry_term,student_status,admission_type,household_members,completed_hours,pending_hours,gpa,birth_year,income_band,home_state,origin_country
+S001,2024001,Ava,Smith,F,Single,Not reported,Undergraduate,10,100,1000,2024,1,Active,Entrance Exam,4,180,1320,8.2,2004,Up to 2 salaries,MA,USA
+S002,2024002,Ben,Johnson,M,Single,White,Undergraduate,10,100,1000,2024,1,Active,Entrance Exam,3,210,1290,7.4,2003,2 to 4 salaries,MA,USA
+S003,2023003,Clara,Williams,F,Married,Brown,Undergraduate,11,110,1100,2023,2,Active,National Selection,2,520,980,8.8,1999,4 to 6 salaries,NY,USA
+S004,2022004,David,Brown,M,Single,Black,Undergraduate,12,120,1200,2022,1,On Leave,Transfer,5,760,740,6.1,2001,Up to 2 salaries,CA,USA
+S005,2021005,Ella,Jones,F,Single,Brown,Undergraduate,11,110,1100,2021,2,Graduated,National Selection,4,1500,0,9.1,1998,6 to 8 salaries,MA,USA
+S006,2024006,Finn,Miller,M,Single,Not reported,Undergraduate,13,130,1300,2024,2,Active,Entrance Exam,3,90,1410,7.9,2005,Up to 2 salaries,TX,USA
+S007,2023007,Grace,Davis,F,Single,White,Undergraduate,12,120,1200,2023,1,Cancelled,Entrance Exam,2,120,1380,4.8,2002,2 to 4 salaries,FL,USA
+S008,2022008,Hugo,Garcia,M,Married,Brown,Undergraduate,13,130,1300,2022,2,Active,Transfer,6,850,650,7.2,1997,4 to 6 salaries,WA,USA
+

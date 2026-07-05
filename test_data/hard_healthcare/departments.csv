@@ -1,0 +1,6 @@
+department_id,department_code,department_name,service_line,campus,building,floor,cost_center,opened_date,active
+D001,PCP,Primary Care,Ambulatory,Main,North,2,CC100,2010-01-01,true
+D002,CARD,Cardiology,Specialty,Main,Heart,4,CC200,2012-06-01,true
+D003,ENDO,Endocrinology,Specialty,Main,South,3,CC300,2015-03-15,true
+D004,LAB,Clinical Laboratory,Diagnostics,Main,Lab,1,CC400,2008-09-01,true
+

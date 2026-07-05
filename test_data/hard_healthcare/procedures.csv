@@ -1,0 +1,7 @@
+procedure_code,code_system,procedure_name,procedure_group,clinical_category,default_duration_minutes,billable_flag,effective_date,retired_date
+99213,CPT,Office outpatient visit established low,Evaluation,Ambulatory Visit,20,true,2020-01-01,
+99214,CPT,Office outpatient visit established moderate,Evaluation,Ambulatory Visit,30,true,2020-01-01,
+80053,CPT,Comprehensive metabolic panel,Laboratory,Chemistry,10,true,2020-01-01,
+83036,CPT,Hemoglobin A1c,Laboratory,Chemistry,10,true,2020-01-01,
+93000,CPT,Electrocardiogram,Diagnostic,Cardiology,15,true,2020-01-01,
+

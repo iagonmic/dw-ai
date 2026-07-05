@@ -1,0 +1,8 @@
+lab_result_id,encounter_id,patient_id,ordering_provider_id,department_id,procedure_code,specimen_collected_date,result_date,lab_test_name,result_value,result_unit,reference_low,reference_high,abnormal_flag,result_status,loinc_code,performing_lab,charge_amount
+L001,E002,PT002,PR002,D004,83036,2026-01-06,2026-01-07,Hemoglobin A1c,8.1,%,4.0,5.6,true,Final,4548-4,Main Lab,75
+L002,E006,PT006,PR004,D004,83036,2026-01-10,2026-01-11,Hemoglobin A1c,9.0,%,4.0,5.6,true,Final,4548-4,Main Lab,75
+L003,E008,PT008,PR003,D004,80053,2026-01-12,2026-01-12,Glucose,112,mg/dL,70,99,true,Final,2345-7,Main Lab,55
+L004,E001,PT001,PR001,D004,80053,2026-01-05,2026-01-05,Creatinine,0.9,mg/dL,0.6,1.3,false,Final,2160-0,Main Lab,55
+L005,E009,PT001,PR001,D004,80053,2026-02-03,2026-02-04,LDL Cholesterol,145,mg/dL,0,100,true,Final,13457-7,Main Lab,65
+L006,E010,PT002,PR004,D004,83036,2026-02-05,2026-02-06,Hemoglobin A1c,7.7,%,4.0,5.6,true,Final,4548-4,Main Lab,75
+
